@@ -1,0 +1,875 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سهيل سوفت - النظم المحاسبية المتكاملة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="img/favicon.png" type="img/png">
+    <style>
+        /* أساسيات التصميم */
+        :root {
+            --primary: #1a4f72;
+            --secondary: #2c8c99;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #010b14;
+            --gray: #6c757d;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tahoma', 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            margin-top: 15px;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-whatsapp {
+            background: #25D366;
+            border-color: #25D366;
+        }
+        
+        .btn-whatsapp:hover {
+            background: transparent;
+            color: #25D366;
+        }
+        
+        /* الهيدر */
+        header {
+    background-color: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: top 0.3s ease;
+}
+
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo h1 {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            background: var(--primary);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        nav li {
+            flex: 1;
+            text-align: center;
+        }
+        
+        nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+        
+        nav a:hover, nav a.active {
+            background: var(--secondary);
+        }
+        
+        /* قسم البطل */
+        .hero {
+            background: linear-gradient(rgba(26, 79, 114, 0.85), rgba(26, 79, 114, 0.85)), 
+                        url('./img/66.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero .btn {
+            background: var(--accent);
+            border-color: var(--accent);
+            margin: 10px;
+        }
+        
+        .hero .btn:hover {
+            color: white;
+            background: transparent;
+        }
+        
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .system-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .system-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .system-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+        
+        .system-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .system-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .system-card.with-image {
+            padding: 0;
+        }
+        
+        .system-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .system-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .system-card:hover .system-image img {
+            transform: scale(1.1);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 79, 114, 0.8);
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+        }
+        
+        .system-card.with-image .content {
+            padding: 20px;
+        }
+        
+        /* عن الشركة */
+        .about-section {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+            padding: 60px 30px;
+        }
+        
+        .about-section .section-title {
+            color: white;
+        }
+        
+        .about-section .section-title::after {
+            background: white;
+        }
+        
+        .about-section p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        .about-section .btn {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        
+        .about-section .btn:hover {
+            background: transparent;
+            color: white;
+        }
+        
+        /* قسم التخصيص الجديد */
+        .customization-section {
+            background: linear-gradient(135deg, #2c8c99, #1a4f72);
+            color: white;
+            padding: 80px 0;
+            margin: 80px 0;
+            text-align: center;
+        }
+        
+        .customization-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .customization-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .customization-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: white;
+            border-radius: 2px;
+        }
+        
+        .customization-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .customization-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .customization-feature {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 25px;
+            width: 250px;
+            text-align: center;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+        
+        .customization-feature:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .customization-feature i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #ffd43b;
+        }
+        
+        .customization-feature h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .whatsapp-btn-large {
+            display: inline-flex;
+            align-items: center;
+            background: #25D366;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .whatsapp-btn-large:hover {
+            background: #128C7E;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        .whatsapp-btn-large i {
+            margin-left: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .whatsapp-badge {
+            background: #ff002b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        /* الفوتر */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 30px 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column a:hover {
+            color: white;
+            padding-right: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(182, 121, 1, 0.868);
+        }
+        
+        /* التجاوبية */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .customization-feature {
+                width: 220px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            
+            .hero {
+                height: auto;
+                padding: 100px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .header-top {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+            }
+            
+            .customization-features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .customization-feature {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero .btn {
+                display: block;
+                width: 80%;
+                margin: 10px auto;
+            }
+            
+            .customization-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+  
+    
+
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>  <span>سهيل سوفت</span></h1>
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/suhailsoft2017"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@suhailsoft5845" target="_blank" class="social-btn" style="background: #FF0000;">
+                    <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://wa.me/967779749491" target="_blank">
+                      <i class="fab fa-whatsapp"></i> خدمة العملاء
+                    </a>
+
+                    <div class="visitor-counter-top" style="                
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 6px 12px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    color: #333;
+">
+    <i class="fas fa-eye" style="color: #ff5722;"></i>
+    <span>عداد الزوار: <strong id="top-visitor-count">3540</strong></span>
+</div>
+
+<script>
+    function cb(response) {
+        document.getElementById('top-visitor-count').innerText = response.value;
+    }
+</script>
+<script async src="https://api.countapi.xyz/hit/www.suhailsoft.com/visits?callback=cb"></script>
+
+                
+            </a> 
+                </div>  
+            </div>                         
+                    
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">الصفحة الرئيسية</a></li>
+                    <li><a href="systems.html">أنظمتنا</a></li>
+                    <li><a href="about.html">عن الشركة</a></li>
+                    <li><a href="clients.html">عملاؤنا</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                    <!-- <li><a href="login.html">تسجيل الدحول</a></li> -->
+                 
+                    
+       
+                </ul>
+            </nav>
+           
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>النظم المحاسبية المتكاملة المعتمدة</h2>
+                <p>حلول محاسبية متطورة ومعتمدة لإدارة كافة أعمالك المالية والتجارية بدقة واحترافية</p>
+                <a href="https://wa.me/967779749491" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> لأي استفسار أو شرح  ، يرجى التواصل معنا عبر واتساب
+                </a>
+                <a href="systems.html" class="btn">اكتشف الأنظمة</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- أنظمة الشركة -->
+        <section class="systems-section">
+            <h2 class="section-title">أنظمتنا المحاسبية المتكاملة</h2>
+            <div class="systems-grid">
+                <!-- النظام المحاسبي العام -->
+                <div class="system-card">
+                    <div class="system-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>النظام المحاسبي المتكامل</h3>
+                    <p>نظام محاسبي معتمد لإدارة كافة العمليات المالية والمحاسبية</p>
+                    <a href="systems.html#accounting" class="btn">عرض التفاصيل</a>
+                </div>
+                
+                <!-- نظام الأندرويد المحاسبي -->
+                <div class="system-card with-image">
+                    <div class="system-image">
+                        <img src="./img/77.jpg" alt="نظام الأندرويد">
+                        <div class="image-overlay">نظام محمول</div>
+                    </div>
+                    <div class="content">
+                        <h3>نظام الأندرويد المحاسبي</h3>
+                        <p>إدارة أعمالك المالية من أي مكان عبر تطبيقنا المخصص للأجهزة المحمولة</p>
+                        
+                        <div class="features-list" style="text-align: right; margin: 20px 0;">
+                            <h4 style="color: var(--primary); margin-bottom: 15px;">المميزات الرئيسية:</h4>
+                            <ul style="list-style-type: none; columns: 2; column-gap: 20px;">
+                                <li style="margin-bottom: 10px; position: relative; padding-right: 25px;">
+                                    <i class="fas fa-check-circle" style="color: var(--secondary); position: absolute; right: 0; top: 5px;"></i>
+                                    نظام محاسبي متكامل يدعم الأندرويد
+                                </li>
+                                <li style="margin-bottom: 10px; position: relative; padding-right: 25px;">
+                                    <i class="fas fa-check-circle" style="color: var(--secondary); position: absolute; right: 0; top: 5px;"></i>
+                                    إعدادات العملات المتعددة
+                                </li>
+                                <li style="margin-bottom: 10px; position: relative; padding-right: 25px;">
+                                    <i class="fas fa-check-circle" style="color: var(--secondary); position: absolute; right: 0; top: 5px;"></i>
+                                    إضافة وإدارة الأصناف
+                                </li>
+                                <li style="margin-bottom: 10px; position: relative; padding-right: 25px;">
+                                    <i class="fas fa-check-circle" style="color: var(--secondary); position: absolute; right: 0; top: 5px;"></i>
+                                    سندات صرف وقبض
+                                </li>
+                                <li style="margin-bottom: 10px; position: relative; padding-right: 25px;">
+                                    <i class="fas fa-check-circle" style="color: var(--secondary); position: absolute; right: 0; top: 5px;"></i>
+                                    القيود اليومية
+                                </li>
+                                <li style="margin-bottom: 10px; position: relative; padding-right: 25px;">
+                                    <i class="fas fa-check-circle" style="color: var(--secondary); position: absolute; right: 0; top: 5px;"></i>
+                                    إدارة المخازن والمستودعات
+                                </li>
+                                <li style="margin-bottom: 10px; position: relative; padding-right: 25px;">
+                                    <i class="fas fa-check-circle" style="color: var(--secondary); position: absolute; right: 0; top: 5px;"></i>
+                                    فواتير المشتريات والمبيعات
+                                </li>
+                                <li style="margin-bottom: 10px; position: relative; padding-right: 25px;">
+                                    <i class="fas fa-check-circle" style="color: var(--secondary); position: absolute; right: 0; top: 5px;"></i>
+                                    ميزان المراجعة
+                                </li>
+                                <li style="margin-bottom: 10px; position: relative; padding-right: 25px;">
+                                    <i class="fas fa-check-circle" style="color: var(--secondary); position: absolute; right: 0; top: 5px;"></i>
+                                    كشوف الحسابات التفصيلية
+                                </li>
+                                <li style="margin-bottom: 10px; position: relative; padding-right: 25px;">
+                                    <i class="fas fa-check-circle" style="color: var(--secondary); position: absolute; right: 0; top: 5px;"></i>
+                                    تقارير مالية متنوعة
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+                            <a href="https://drive.google.com/file/d/1S0TbLKQzRqnHKUXhbcoWMl8eELBWLrTi/view?usp=sharing" class="btn" target="_blank" style="flex: 1; min-width: 200px;">
+                                <i class="fas fa-download"></i> تحميل التطبيق
+                            </a>
+                            <a href="https://wa.me/967779749491" class="btn btn-whatsapp" style="flex: 1; min-width: 200px;">
+                                <i class="fab fa-whatsapp"></i> للطلب والشرح
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+               
+
+        <!-- قسم تخصيص النظام -->
+        <section class="customization-section">
+            <div class="customization-container">
+                <h2>تخصيص النظام حسب احتياجات عملك</h2>
+                <p>
+                    نتفهم أن لكل عمل متطلباته الفريدة. لذلك نقدم خدمة التخصيص الشامل للنظام المحاسبي لتلبية احتياجاتك الخاصة. سواء كنت بحاجة إلى إضافة وظائف جديدة، تعديل التقارير، أو دمج النظام مع أنظمة أخرى، فريقنا جاهز لتحقيق رؤيتك.
+                </p>
+            
+                
+                
+                <a href="https://wa.me/967779749491" class="whatsapp-btn-large">
+                    <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
+                </a>
+                
+                <p style="margin-top: 30px; font-size: 1.1rem;">
+                    تحدث مع أحد خبرائنا الآن لتحديد متطلباتك والحصول على نظام محاسبي مصمم خصيصاً لعملك
+                </p>
+            </div>
+        </section>
+
+        <!-- عن الشركة -->
+        <section class="about-section">
+            <div class="about-content">
+                <h2 class="section-title">عن شركة سهيل سوفت</h2>
+                <p>شركة رائدة في مجال النظم المحاسبية المتكاملة المعتمدة منذ عام 2005. نقدم حلولاً محاسبية متكاملة تلبي كافة احتياجات الأعمال التجارية والصناعية والخدمية، مع التزامنا بأعلى معايير الدقة المحاسبية والجودة.</p>
+                <a href="about.html" class="btn">المزيد عنا</a>
+                <a href="https://wa.me/967779749491" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> تواصل معنا عبر الواتساب
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>سهيل سوفت</h3>
+                    <p>الرائدة في تقديم الحلول المحاسبية المتكاملة المعتمدة لجميع قطاعات الأعمال.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/suhailsoft2017"><i class="fab fa-facebook-f"></i></a>
+                       <a href="https://www.youtube.com/@suhailsoft5845" target="_blank" class="social-btn" style="background: #FF0000;">
+                    <i class="fab fa-youtube"></i>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/967779749491"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الصفحة الرئيسية</a></li>
+                        <li><a href="systems.html">أنظمتنا</a></li>
+                        <li><a href="about.html">عن الشركة</a></li>
+                        <li><a href="clients.html">عملاؤنا</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>اتصل بنا</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +967 779 749 491</li>
+                        <li><i class="fas fa-phone"></i> +967 777 268 083</li>
+                        <li><i class="fab fa-whatsapp"></i> واتساب: 779749491</li>
+                        <li><i class="fas fa-envelope"></i> nageebali0@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 سهيل سوفت. جميع الحقوق محفوظة.</p>
+                <p>تطوير وتصميم: فريق سهيل سوفت للبرمجيات</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // إضافة تأثير التمرير السلس
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // إضافة تأثير التمرير للهيدر
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                header.style.boxShadow = 'none';
+                header.style.background = 'white';
+            }
+        });
+        
+        // WhatsApp button click event
+        document.querySelector('.whatsapp-btn-large').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open(this.href, '_blank');
+            alert('جارٍ تحويلك إلى واتساب للتواصل مع فريق الدعم. رقمنا: 967779749491+');
+        });
+    </script>
+    <script>
+        let lastScrollTop = 0;
+        const header = document.querySelector("header");
+        
+        window.addEventListener("scroll", function() {
+          let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          
+          if (scrollTop > lastScrollTop) {
+            // المستخدم ينزل للأسفل ⇒ إخفاء الهيدر
+            header.style.top = "-100px";
+          } else {
+            // المستخدم يصعد للأعلى ⇒ إظهار الهيدر
+            header.style.top = "0";
+          }
+          
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // لتفادي القيم السالبة
+        }, false);
+        </script>
+        
+</body>
+</html>

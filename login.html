@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - SuhailSoft</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="img/favicon.png" type="img/png">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        body {
+            background: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .login-container {
+            background: white;
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .logo {
+            width: 80px;
+            margin-bottom: 1.5rem;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+        .google-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #4285F4;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 1rem 0;
+        }
+        .google-btn:hover {
+            background: #3367d6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .google-btn img {
+            width: 20px;
+            margin-left: 10px;
+        }
+        .divider {
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        .divider::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e0e0e0;
+            z-index: 1;
+        }
+        .divider span {
+            background: white;
+            padding: 0 10px;
+            position: relative;
+            z-index: 2;
+            color: #7f8c8d;
+        }
+        .footer {
+            margin-top: 2rem;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        .error-message {
+            color: #e74c3c;
+            margin-bottom: 1rem;
+            display: none;
+        }
+            .facebook-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #1877F2;
+                color: white;
+                padding: 12px 24px;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                margin: 1rem 0;
+            }
+            .facebook-btn:hover {
+                background: #145dbf;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            .facebook-btn img {
+                width: 20px;
+                margin-left: 10px;
+            }
+      
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="/images/logo.png" alt="شعار SuhailSoft" class="logo">
+        <h1>تسجيل الدخول إلى حسابك</h1>
+        
+        <!-- رسالة الخطأ -->
+        <div class="error-message" id="errorMessage"></div>
+        
+        <!-- زر تسجيل الدخول عبر جوجل -->
+        <a href="/auth/google" class="google-btn">
+            <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Logo">
+            تسجيل الدخول باستخدام Google
+        </a>
+                <a href="/auth/facebook" class="facebook-btn">
+            <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook Logo">
+            تسجيل الدخول باستخدام Facebook
+        </a>
+        
+        <div class="divider">
+            <span>أو</span>
+        </div>
+        
+        <!-- نموذج تسجيل الدخول العادي (اختياري) -->
+        <form id="loginForm" style="display: none;">
+            <input type="email" placeholder="البريد الإلكتروني" required>
+            <input type="password" placeholder="كلمة المرور" required>
+            <button type="submit">تسجيل الدخول</button>
+        </form>
+                <form id="loginForm" action="/auth/login" method="POST">
+            <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+            <input type="password" name="password" placeholder="كلمة المرور" required>
+            <button type="submit">تسجيل الدخول</button>
+        </form>  
+              <form id="registerForm" action="/auth/register" method="POST">
+            <input type="text" name="username" placeholder="اسم المستخدم" required>
+            <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+            <input type="password" name="password" placeholder="كلمة المرور" required>
+            <button type="submit">إنشاء حساب</button>
+        </form>
+        <div class="footer">
+            بالاستمرار، أنت توافق على <a href="/terms">الشروط والأحكام</a> و<a href="/privacy">سياسة الخصوصية</a>
+        </div>
+    </div>
+
+    <script>
+        // عرض رسائل الخطأ من السيرفر
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        if (error) {
+            errorMessage.style.display = 'block';
+            errorMessage.textContent = decodeURIComponent(error);
+        }
+        
+        // يمكنك إضافة المزيد من الوظائف هنا
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // إضافة منطق تسجيل الدخول هنا
+        });
+    </script>
+</body>
+</html>
